@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css3/bootstrap.min.css">
+  <style> 
+    table.greenTable td, table.greenTable th {
+      border: 1px solid #24943A;
+      padding: 3px 2px;
+    }
+    table.greenTable tbody td {
+      font-size: 13px;
+    }
+    table.greenTable thead {
+      background: #24943A;
+      background: -moz-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+    
+    }
+    table.greenTable thead th {
+      font-size: 19px;
+      font-weight: bold;
+      color: #F0F0F0;
+      text-align: left;
+      border-left: 2px solid #24943A;
+    }
+    table.greenTable thead th:first-child {
+      border-left: none;
+    }
+    
+    table.greenTable tfoot {
+      font-size: 1px;
+      font-weight: bold;
+      color: #F0F0F0;
+      background: #24943A;
+      background: -moz-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+      background: -webkit-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+      background: linear-gradient(to bottom, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+      border-top: 1px solid #24943A;
+    }
+    table.greenTable tfoot td {
+      font-size: 13px;
+    }
+    table.greenTable tfoot .links {
+      text-align: right;
+    }
+    table.greenTable tfoot .links a{
+      display: inline-block;
+      background: #FFFFFF;
+      color: #24943A;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+    
+    
+    #menu {
+      background: #00CC07;
+      background: linear-gradient(to bottom,  #1FCC0C,  #12FF1A);
+      color: #FFF;
+      height: 58px;
+      padding-left: 18px;
+      border-radius: 18px;
+      border: 5px groove #6D6D6D;
+    }
+    #menu ul, #menu li {
+      margin: 0 auto;
+      padding: 0;
+      list-style: none
+    }
+    #menu ul {
+      width: 100%;
+    }
+    #menu li {
+      float: left;
+      display: inline;
+      position: relative;
+    }
+    #menu a {
+      display: block;
+      line-height: 48px;
+      padding: 0 14px;
+      text-decoration: none;
+      color: #FFFFFF;
+      font-size: 16px;
+    }
+    #menu a.dropdown-arrow:after {
+      content: "\25BE";
+      margin-left: 5px;
+    }
+    #menu li a:hover {
+      color: #0099CC;
+      background: #F2F2F2;
+    }
+    #menu input {
+      display: none;
+      margin: 0;
+      padding: 0;
+      height: 58px;
+      width: 100%;
+      opacity: 0;
+      cursor: pointer
+    }
+    #menu label {
+      display: none;
+      line-height: 48px;
+      text-align: center;
+      position: absolute;
+      left: 35px
+    }
+    #menu label:before {
+      font-size: 1.6em;
+      content: "\2261"; 
+      margin-left: 20px;
+    }
+    #menu ul.sub-menus{
+      height: auto;
+      overflow: hidden;
+      width: 170px;
+      background: #444444;
+      position: absolute;
+      z-index: 99;
+      display: none;
+    }
+    #menu ul.sub-menus li {
+      display: block;
+      width: 100%;
+    }
+    #menu ul.sub-menus a {
+      color: #FFFFFF;
+      font-size: 16px;
+    }
+    #menu li:hover ul.sub-menus {
+      display: block
+    }
+    #menu ul.sub-menus a:hover{
+      background: #F2F2F2;
+      color: #444444;
+    }
+    @media screen and (max-width: 800px){
+      #menu {position:relative}
+      #menu ul {background:#111;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none}
+      #menu ul.sub-menus {width:100%;position:static;}
+      #menu ul.sub-menus a {padding-left:30px;}
+      #menu li {display:block;float:none;width:auto;}
+      #menu input, #menu label {position:absolute;top:0;left:0;display:block}
+      #menu input {z-index:4}
+      #menu input:checked + label {color:white}
+      #menu input:checked + label:before {content:"\00d7"}
+      #menu input:checked ~ ul {display:block}
+    }
+    #al{border: 4px solid green
+    ;
+    }
+    hr
+    {border: 4px solid green
+    ;
+    }
+table.greenTable td, table.greenTable th {
+  border: 1px solid #24943A;
+  padding: 3px 2px;
+}
+table.greenTable tbody td {
+  font-size: 13px;
+}
+table.greenTable thead {
+  background: #24943A;
+  background: -moz-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+
+}
+table.greenTable thead th {
+  font-size: 19px;
+  font-weight: bold;
+  color: #F0F0F0;
+  text-align: left;
+  border-left: 2px solid #24943A;
+}
+table.greenTable thead th:first-child {
+  border-left: none;
+}
+
+table.greenTable tfoot {
+  font-size: 1px;
+  font-weight: bold;
+  color: #F0F0F0;
+  background: #24943A;
+  background: -moz-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+  background: -webkit-linear-gradient(top, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+  background: linear-gradient(to bottom, #5baf6b 0%, #3a9e4d 66%, #24943A 100%);
+  border-top: 1px solid #24943A;
+}
+table.greenTable tfoot td {
+  font-size: 13px;
+}
+table.greenTable tfoot .links {
+  text-align: right;
+}
+table.greenTable tfoot .links a{
+  display: inline-block;
+  background: #FFFFFF;
+  color: #24943A;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+
+#menu {
+	background: #00CC07;
+	background: linear-gradient(to bottom,  #1FCC0C,  #12FF1A);
+	color: #FFF;
+	height: 58px;
+	padding-left: 18px;
+	border-radius: 18px;
+	border: 5px groove #6D6D6D;
+}
+#menu ul, #menu li {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none
+}
+#menu ul {
+	width: 100%;
+}
+#menu li {
+	float: left;
+	display: inline;
+	position: relative;
+}
+#menu a {
+	display: block;
+	line-height: 48px;
+	padding: 0 14px;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 16px;
+}
+#menu a.dropdown-arrow:after {
+	content: "\25BE";
+	margin-left: 5px;
+}
+#menu li a:hover {
+	color: #0099CC;
+	background: #F2F2F2;
+}
+#menu input {
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 58px;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer
+}
+#menu label {
+	display: none;
+	line-height: 48px;
+	text-align: center;
+	position: absolute;
+	left: 35px
+}
+#menu label:before {
+	font-size: 1.6em;
+	content: "\2261"; 
+	margin-left: 20px;
+}
+#menu ul.sub-menus{
+	height: auto;
+	overflow: hidden;
+	width: 170px;
+	background: #444444;
+	position: absolute;
+	z-index: 99;
+	display: none;
+}
+#menu ul.sub-menus li {
+	display: block;
+	width: 100%;
+}
+#menu ul.sub-menus a {
+	color: #FFFFFF;
+	font-size: 16px;
+}
+#menu li:hover ul.sub-menus {
+	display: block
+}
+#menu ul.sub-menus a:hover{
+	background: #F2F2F2;
+	color: #444444;
+}
+@media screen and (max-width: 800px){
+	#menu {position:relative}
+	#menu ul {background:#111;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none}
+	#menu ul.sub-menus {width:100%;position:static;}
+	#menu ul.sub-menus a {padding-left:30px;}
+	#menu li {display:block;float:none;width:auto;}
+	#menu input, #menu label {position:absolute;top:0;left:0;display:block}
+	#menu input {z-index:4}
+	#menu input:checked + label {color:white}
+	#menu input:checked + label:before {content:"\00d7"}
+	#menu input:checked ~ ul {display:block}
+}
+#al{border: 4px solid green
+;
+}
+hr
+{border: 4px solid rgb(0, 128, 0)
+;
+}
+  </style>
+<html>
+</head>
+  
+  <nav id='menu'>
+  <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+  <ul>
+    <li><a href="#necrons">Necrons</a></li>
+    <li><a class='dropdown-arrow' href='http://'>Products</a>
+      <ul class='sub-menus'>
+      <li id="pan4"><a href="#pan3">Que Son Los Necrons?</a></li>       
+          <li id="negro1"><a href="#negro2">Dinastía Szarekhan (La dinastia del propio rey)</a></li>
+          <li id="rojo1"><a href="#rojo2">Dinastía Novokh (La cosecha roja)</a></li>
+          <li id="naranja1"><a href="#naranja2">Dinastía Mephrit (Destructores de estrellas)</a></li>
+          <li id="gris1"><a href="#gris2">Dinastía Maynark (El Virus desollador)</a></li>
+          <li id="oro1"><a href="#oro2">Dinastía Nephrekh(El centro un universo)</a></li>
+          <li id="oropuro1"><a href="#oropuro2">Dinastía Nihiliakh(La dinastia mas rica)</a> </li>
+          <li id="pan3_3"><a href="#pan5">Dinastía Sautekh(La gran dinastia)</a></li>
+        </ul>
+    </li>
+  
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+    
+ <style>
+
+  
+   
+        #container {
+            width: 00px;
+            margin:auto;
+            border: 500px solid rgb(51, 47, 47);     
+   }
+   
+     #lado1 {
+            width: 200px;
+            margin-left: -350px;
+            
+
+        }
+   
+      #lado2  {
+            margin-left: 180px;
+        
+        }
+   #el{
+            margin-top: -300px;
+            margin-left: 10px;
+     
+        }
+#il{
+            margin-top: -380px;
+            margin-left: 200px;
+            border: 4px solid rgb(0, 128, 0)
+        }
+   
+   #ol{
+            margin-top: -580px;
+            margin-left: 200px;
+            border: 4px solid rgb(0, 128, 0)
+        }
+   
+     #ul{
+            margin-top: -580px;
+            margin-left: 210px;
+            border: 4px solid rgb(0, 128, 0)
+        }
+   
+       #all{
+            margin-top: -580px;
+            margin-left: 210px;
+            border: 4px solid rgb(0, 128, 0)
+        }
+          #ell{
+            margin-top: -580px;
+            margin-left: 210px;
+            border: 4px solid rgb(0, 128, 0)
+        }
+   
+        #ill{
+            margin-top: -700px;
+            margin-left: 220px;
+            border: 4px solid rgb(0, 128, 0)
+        }
+   
+        #oll{
+            margin-top: -600px;
+            margin-left: 220px;
+            border: 4px solid rgb(0, 128, 0)
+        }
+   
+      #ok{
+        margin:auto;
+        }
+   
+   
+     body{background-color:rgb(39, 29, 29);}
+      h1{color:rgb(6, 255, 6);}
+      .eje2{color:rgb(255, 255, 255);}
+      #pan{color:rgb(9, 184, 32);}
+      #pan2{color:rgb(75, 170, 88);}
+      #pan2{font-family: Arial;}
+      #pan2{font-size: 15px;}
+      #pan3{color:rgb(6, 255, 6);}
+      #pan4{color:rgb(6, 255, 6);}
+      #pan3{font-size: 25px;}
+      .eje2{color:rgb(255, 255, 255);}
+      #negro1{color:rgb(0, 0, 0);}  
+      #negro2{font-size: 25px;}
+      #rojo1{color:rgb(255, 0, 0);} 
+      #rojo2{color:rgb(255, 0, 0);}
+      #rojo2{font-size: 25px;}
+      #naranja1{color:rgb(255, 136, 0);}
+      #naranja2{color:rgb(255, 136, 0);}
+      #naranja2{font-size: 25px;}
+      #gris1{color:rgb(87, 87, 87);}
+      #gris2{color:rgb(87, 87, 87);}
+      #girs2{font-size: 25px;}
+      #oro1{color:rgb(214, 200, 0);} 
+      #oro2{color:rgb(214, 200, 0);} 
+      #oro2{font-size: 25px;}
+      #oropuro1{color:rgb(255, 238, 0);} 
+      #oropuro2{color:rgb(255, 238, 0);} 
+      #oropuro2{font-size: 25px;}
+      #pan5{color:rgb(6, 255, 6);}
+      #ok{width: 500px;}
+      .eje2{text-align: justify;}
+      .eje2{border: 4px solid rgb(0, 128, 0)
+;
+}
+  </style>
+<div id="container">
+  <div id="ok">
+<h2 id="pan">Todo Sobre Los Necrons</h2>
+</div>
+
+<body>
+ 
+  
+
+
+<div id="lado1">
+        <header>
+          
+     <img id="al" src="https://p4.wallpaperbetter.com/wallpaper/434/57/279/necrons-guards-awakening-warhammer-necrons-hd-wallpaper-preview.jpg" width="700" height="500" alt="foto"  />
+                    
+  
+        </header>
+  
+ 
+  
+        <section>
+          
+          <div id="lado2">
+           <figure>
+                    <img id="al" src="https://assets.reedpopcdn.com/the-necrons-are-coming-to-warhammer-40-000-battlesector-1639583858138.jpg/BROK/thumbnail/1600x900/format/jpg/quality/80/the-necrons-are-coming-to-warhammer-40-000-battlesector-1639583858138.jpg" width="500" height="300" alt="foto"  />
+            </figure>
+
+  </div>
+    <div id="el">      
+        
+        <ul id="pan2">
+          <li id="pan4">Que Son Los Necrons?</a></li>   
+          <br/>
+          <li id="negro1">Dinastía Szarekhan (La dinastia del propio rey)</a></li>
+          <br/>
+          <li id="rojo1">Dinastía Novokh (La cosecha roja)</a></li>
+          <br/>
+          <li id="naranja1">Dinastía Mephrit (Destructores de estrellas)</a></li>
+          <br/>
+          <li id="gris1">Dinastía Maynark (El Virus desollador)</a></li>
+          <br/>
+          <li id="oro1">Dinastía Nephrekh(El centro un universo)</a></li>
+          <br/>
+          <li id="oropuro1">Dinastía Nihiliakh(La dinastia mas rica)</a> </li>
+          <br/>
+          <li id="pan3_3">Dinastía Sautekh(La gran dinastia)</a></li>
+          </ul>
+          <br/>
+
+
+</div>
+                 
+
+
+
+<hr class="verdetactico"width="720" height="500">
+  
+    
+  
+          <h2 id="pan3">Que Son Los Necrons? </h2>
+          <P class="eje2">Los Necrones son una misteriosa especie xenos de guerreros 
+      esqueléticos humanoides y robóticos que han permanecido inactivos 
+      en sus tumbas de estasis durante más de 60 millones de años terran, 
+      aunque finalmente han comenzado a despertar. Son las creaciones sin 
+      alma y los antiguos sirvientes del antiguo C'tan, 
+      los terribles dioses de las estrellas del mito de Aeldari.</P>
+  
+    <img id="il" src="https://spikeybits.com/wp-content/uploads/2019/07/Screenshot_130.jpg" width="500" height="300" alt="foto"  />
+
+  
+<hr class="verdetactico"width="720" height="500">
+
+
+
+  
+          <h2 id="negro2">Dinastía Szarekhan </h2>
+    <P class="eje2">Sareh fue el último Rey Necrón Silencioso que gobernó 
+      la Dinastía Sarekhan. En la era prebiológica, ninguna dinastía fue 
+      tan poderosa como esta, ni gozó de tanto prestigio y apoyo. La nobleza 
+      de esta dinastía veía la galaxia con un sentido de iluminación, y la 
+      superioridad que sentían sobre el resto de las razas era evidente, a
+      menudo de forma brutal. No asimilaron a sus oponentes y no buscaron 
+      el honor: los Sarekhans solo querían someter a sus enemigos, destruir a todos los que no juraron ser
+      sus esclavos.
+</P>
+
+          
+    <img id="ol" src="https://1.bp.blogspot.com/-Ah9pFlCK4zo/WrJ0b4b6IYI/AAAAAAAAUY8/oWnUZrDaK18gpT9FoUcJ48k-buuxRuQFgCLcBGAs/s1600/40kNecronsNovokh-Mar21-Header11b.jpg" width="600" height="400" alt="foto"  />
+
+<hr class="verdetactico"width="720" height="500">
+
+          <h2 id="rojo2">Dinastía Novokh </h2>
+    <P class="eje2"> Pocas legiones de Necrones eran tan poderosas como el Cuerpo de Novokh. 
+      Una cosa es ver a los guerreros de carne y hueso abrir un camino sangriento
+      a través de sus enemigos, y otra ver a estos droides con ojos de vidrio
+      pasar de la matanza mecanizada a la sangre y la furia asesina.
+      Este es un juego de terror completo. Los novochitas no
+      mostraron piedad ni compasión por sus víctimas, 
+      matándolas en masa como carniceros locos. Continúan matando gente 
+      hasta que sus cuerpos vivientes de metal están cubiertos de tripas y 
+      la víctima no es más que una pizca de pulpa.
+
+          
+    <img id="ul" src="https://1.bp.blogspot.com/-Jr1HMAMIfqs/WrEqqK1IBdI/AAAAAAAAUXo/EQEGSyfMagQx5a4faZTEPQU_Bx_d-RY6wCLcBGAs/s1600/40kNecrons-Mar20-Header10r.jpg" width="600" height="400" alt="foto"  />
+
+<hr class="verdetactico"width="720" height="500">
+
+          <h2 id="naranja2">Dinastía Mephrit </h2>
+    <P class="eje2"> La dinastía Mephrite fue la dinastía Necron.
+      Esparcidos entre las estrellas durante miles de
+      años por las manos descuidadas del destino, los restos de
+      Tombworld han despertado recientemente, recuperando la 
+      gloria y la majestuosidad que una vez poseyeron, cada uno 
+      con su propio fragmento de imperio, ansioso por disfrutar
+      y reconstruir. La infame dinastía Mephrite estaba en el punto
+      de mira de una violenta devastación. En los días previos al Gran Sueño,
+      fueron asesinos de los Reyes Silenciosos, 
+      destruyendo sistemas estelares completos con 
+      sus grandes armas de destrucción estelar.
+</P>
+          
+     <img id="all" src="https://3.bp.blogspot.com/-DZtwym2LKEU/WsABU78kU-I/AAAAAAAAS8A/4_c9JW7awKgf7Ahw1HrxicrczSEZYNR-QCLcBGAs/s1600/122.jpg" width="310" height="480" alt="foto"  />
+
+<hr class="verdetactico"width="720" height="500">
+          
+ <h2 id="gris2">Dinastía Maynark </h2>
+    <P class="eje2"> La raza Necron tiene poderes que no tienen comparación
+      con las razas jóvenes de hoy en día que luchan contra los
+      muertos vivientes en la galaxia. Al aceptar la biotransición
+      en el Infierno, es decir, al lograr la inmortalidad dentro de
+      los fríos caparazones metálicos de los androides, conservan una 
+      aterradora brillantez de vida, pero esto supera con creces
+      su existencia. Sus viejos sueños lo llevaron a su lento declive y, 
+      en algunos casos, a la contaminación y los desastres naturales.Las
+      costumbres y prácticas de las civilizaciones antiguas, como las
+      guerras Necronas, las almas rotas y las almas heridas, se reforzaron 
+      como lo eran entonces. 
+     
+</P>
+          
+              <img id="ell" src="http://pm1.narvii.com/7450/0ae2d7e1ecf36b2a0184a17a4c38a6b97deb82e3r1-712-989v2_uhq.jpg" width="300" height="480" alt="foto"  />
+
+<hr class="verdetactico"width="720" height="500">
+
+          <h2 id="oro2">Dinastía Nephrekh </h2>
+    <P class="eje2"> 
+     Las estrellas ternarias del mundo corona Nephrekh, Aryand, 
+      proporcionan abundante energía solar que beneficia gratamente a 
+      esta dinastía. Sin embargo, en una galaxia en guerra constante, 
+      se han visto obligados a luchar para conservar lo que es suyo.
+      Cuando el complejo funerario bajo la superficie de Aryand despertó de su letargo, sus habitantes emergieron para descubrir que las
+      legiones de la dinastía Altymhor habían conquistado el mundo.
+      
+</P>
+                    <img id="ell" src="https://www.laguaridadebyor.com/wp-content/uploads/Sautekh3.jpg" width="500" height="300" alt="foto"  />
+
+
+<hr class="verdetactico"width="720" height="500">
+
+          
+          <h2 id="oropuro2">Dinastía Nihiliakh </h2>
+    <P class="eje2">La Dinastía Nihira ha construido una reputación 
+      formidable entre las razas más jóvenes de la galaxia desde que 
+      el mundo comenzó a despertar. Tienden a estar a la defensiva, 
+      pero siguen siendo conquistadores despiadados y enemigos mortales.
+      Después de despertar del Gran Sueño, Nihiraki encontró gran parte 
+      de su antiguo reino destruido. Al verse al borde del desastre, 
+      resultó ser un movimiento muy inteligente para sus contemporáneos 
+      unirse a las fuerzas de la dinastía Gidden en la cima del mundo.
+     
+</P>
+          <img id="ill" src="https://4.bp.blogspot.com/-ElLfgzeYAho/WrPHqA5MPPI/AAAAAAAAUhY/yTzz4LJA1OIGBrXqDCZ29MhqnNRcfZvfACLcBGAs/s1600/40kNecronsNihilakh-Mar22-Header9kq.jpg" width="500" height="300" alt="foto"  /> 
+
+
+<hr class="verdetactico"width="720" height="500">
+
+
+          <h2 id="pan5">Dinastía Sautekh</h2>
+    <P class="eje2">La dinastía Sotek es mejor conocida por dos cosas: la eficiencia
+      despiadada con la que aniquilaron a sus enemigos y la compleja
+      jerarquía que los gobierna. Cada año, los Sotek absorben, se anexionan
+      o conquistan mundos más pequeños e incluso dinastías más pequeñas,
+      y cada nueva incorporación es un engranaje brillante en la máquina
+      destructora de dinero. Durante la Guerra del Cielo, y antes de la 
+      Transferencia de las Criaturas, la dinastía Sautek fue considerada 
+      la tercera más poderosa.        
+      </p>
+           <img id="oll" src="https://www.laguaridadebyor.com/wp-content/uploads/Sautekh1.jpg" width="600" height="500" alt="foto"  /> 
+
+        </section>
+
+<hr class="verdetactico"width="720" height="500">
+
+        <aside>
+          <h2 id="pan3">dato curioso</h2>
+        <p class="eje2"> Es importante recalcar que los negros son una
+        raza muy arrogante y orgullosa, que para pasar de
+        esto a seguir el mismo objetivo, (que es conseguir
+        cuerpos biológicos) cada uno actúa de manera muy 
+        individualista; siendo esta laraza para la cual 
+        existen diferentes dinastias.</p>
+        </aside>
+
+     
+<hr class="verdetactico"width="720" height="500">
+
+           <table class="greenTable"><caption id="pan3">PODERIO NECRONTIR</caption>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: #06ff06; font-family: Arial; font-size: medium;"><span style="font-weight: 400;">Faciones</span></span></th>
+<th style="text-align: center;"><span style="color: #06ff06; font-family: Arial; font-size: medium;"><span style="font-weight: 400;">Capasidades</span></span></th>
+<th><span style="color: #06ff06; font-family: Arial; font-size: medium; font-weight: 400; text-align: center;">&nbsp;Tropas</span></th>
+<th><span style="color: #06ff06; font-family: Arial; font-size: medium; font-weight: 400; text-align: center;">economia</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: start;"><span style="color: #000000; font-family: Arial; font-size: medium;">Dinast&iacute;a Szarekhan</span></td>
+<td><span style="color: #000000; font-family: Arial; font-size: medium; text-align: start;">9</span></td>
+<td><span style="color: #000000; font-family: Arial; font-size: medium; text-align: start;">9</span></td>
+<td><span style="color: #000000; font-family: Arial; font-size: medium; text-align: start;">9</span></td>
+</tr>
+<tr>
+<td><span style="color: #ff0000; font-family: Arial; font-size: medium; text-align: start;">Dinast&iacute;a Novokh</span></td>
+<td><span style="color: #ff0000; font-family: Arial; font-size: medium; text-align: start;">10</span></td>
+<td><span style="color: #ff0000; font-family: Arial; font-size: medium; text-align: start;">5</span></td>
+<td><span style="color: #ff0000; font-family: Arial; font-size: medium; text-align: start;">6</span></td>
+</tr>
+<tr>
+<td><span style="color: #ff8800; font-family: Arial; font-size: medium; text-align: start;">Dinast&iacute;a Mephrit</span></td>
+<td><span style="color: #ff8800; font-family: Arial; font-size: medium; text-align: start;">10</span></td>
+<td><span style="color: #ff8800; font-family: Arial; font-size: medium; text-align: start;">8</span></td>
+<td><span style="color: #ff8800; font-family: Arial; font-size: medium; text-align: start;">7</span></td>
+</tr>
+<tr>
+<td><span style="color: #575757; font-family: Arial; font-size: medium; text-align: start;">Dinast&iacute;a Maynark</span></td>
+<td><span style="color: #575757; font-family: Arial; font-size: medium; text-align: start;">9</span></td>
+<td><span style="color: #575757; font-family: Arial; font-size: medium; text-align: start;">5</span></td>
+<td><span style="color: #575757; font-family: Arial; font-size: medium; text-align: start;">4</span></td>
+</tr>
+<tr>
+<td><span style="color: #d6c800; font-family: Arial; font-size: medium; text-align: start;">Dinast&iacute;a Nephrekh</span></td>
+<td><span style="color: #d6c800; font-family: Arial; font-size: medium; text-align: start;">10</span></td>
+<td><span style="color: #d6c800; font-family: Arial; font-size: medium; text-align: start;">3</span></td>
+<td><span style="color: #d6c800; font-family: Arial; font-size: medium; text-align: start;">8</span></td>
+</tr>
+<tr>
+<td><span style="color: #ffee00; font-family: Arial; font-size: medium; text-align: start;">Dinast&iacute;a Nihiliakh</span></td>
+<td><span style="color: #ffee00; font-family: Arial; font-size: medium; text-align: start;">10</span></td>
+<td><span style="color: #ffee00; font-family: Arial; font-size: medium; text-align: start;">8</span></td>
+<td><span style="color: #ffee00; font-family: Arial; font-size: medium; text-align: start;">10</span></td>
+</tr>
+<tr>
+<td><span style="color: #06ff06; font-family: Arial; font-size: medium; text-align: start;">Dinast&iacute;a Sautekh</span></td>
+<td><span style="color: #06ff06; font-family: Arial; font-size: medium; text-align: start;">10</span></td>
+<td><span style="color: #06ff06; font-family: Arial; font-size: medium; text-align: start;">10</span></td>
+<td><span style="color: #06ff06; font-family: Arial; font-size: medium; text-align: start;">9</span></td>
+</tr>
+</tbody>
+</table>
+
+<hr class="verdetactico"width="720" height="500">
+
+
+        <footer>
+          
+          <h2 id="pan3"> identificacion y cominicacion yea</h2> 
+          <p class="eje2"> NUMER:314 3975559<br/><br/> id: 1028862482</p>
+          
+        </footer>
+
+</div>
+
+</body>
+</html>
